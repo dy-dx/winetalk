@@ -109,7 +109,7 @@ void ResetBuffer()
     _buffer.dwNumberOfPhonemeChanges = 0;
     _buffer.dwNumberOfIndexMarks = 0;
     // I don't think I need to do this but whatevs
-    memset(&daBytes[0], 0, BUFFER_SIZE);
+    memset(daBytes, 0, sizeof(daBytes));
 }
 
 void TTSCallbackRoutine(LONG lParam1, LONG lParam2, DWORD dwInstanceParam, UINT uiMsg)
@@ -142,8 +142,8 @@ int main(int argc, char* argv[])
     link_that_shit_homie(dllHandle);
     register_window_messages();
 
-    _buffer.dwMaximumBufferLength = BUFFER_SIZE;
-    _buffer.lpData = &daBytes[0];
+    _buffer.dwMaximumBufferLength = sizeof(daBytes);
+    _buffer.lpData = daBytes;
 
     MMRESULT mmStatus;
 
