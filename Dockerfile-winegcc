@@ -1,0 +1,8 @@
+FROM i386/debian:stretch-slim
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        wine \
+        wine32-tools \
+    && rm -rf /var/lib/apt/lists/*
+
