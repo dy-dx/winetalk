@@ -9,7 +9,8 @@
 #include <io.h>
 #include <fcntl.h>
 
-typedef struct TTS_PHONEME_TAG {
+typedef struct TTS_PHONEME_TAG
+{
     DWORD dwPhoneme;
     DWORD dwPhonemeSampleNumber;
     DWORD dwPhonemeDuration;
@@ -18,7 +19,8 @@ typedef struct TTS_PHONEME_TAG {
 
 typedef TTS_PHONEME_T * LPTTS_PHONEME_T;
 
-typedef struct TTS_INDEX_TAG {
+typedef struct TTS_INDEX_TAG
+{
     DWORD dwIndexValue;
     DWORD dwIndexSampleNumber;
     DWORD dwReserved;
@@ -120,7 +122,8 @@ void TTSCallbackRoutine(LONG lParam1, LONG lParam2, DWORD dwInstanceParam, UINT 
     if (uiMsg == UiBufferMsg)
     {
         UINT length = _buffer.dwBufferLength;
-        if(fwrite(daBytes, sizeof(char), length, stdout) != length) {
+        if(fwrite(daBytes, sizeof(char), length, stdout) != length)
+        {
             perror("fwrite");
         }
         ResetBuffer();
