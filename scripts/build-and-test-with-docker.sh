@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
 
-scripts/build-with-docker-winegcc.sh
+# scripts/build-with-docker-winegcc.sh
+scripts/build-with-dockcross-mingw32.sh
 
 docker build -f Dockerfile -t winetalk .
 

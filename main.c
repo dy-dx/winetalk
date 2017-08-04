@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <windows.h>
 #include <mmsystem.h>   // includes multimedia extensions
+// required for _setmode
+#include <io.h>
+#include <fcntl.h>
 
 typedef struct TTS_PHONEME_TAG {
     DWORD dwPhoneme;
@@ -127,6 +130,7 @@ void TTSCallbackRoutine(LONG lParam1, LONG lParam2, DWORD dwInstanceParam, UINT 
 
 int main(int argc, char* argv[])
 {
+    _setmode(_fileno(stdout), _O_BINARY);
     char *msg = "hello";
     if (argc >= 2)
     {

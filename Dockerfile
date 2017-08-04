@@ -20,6 +20,6 @@ WORKDIR /home/wineuser
 RUN wineboot --init \
     && while pgrep wineserver >/dev/null; do echo "Waiting for wineserver"; sleep 1; done
 
-COPY .asoundrc *.dic *.dll winetalk.sh winetalk.sh.so scripts/run.sh ./
+COPY .asoundrc *.dic *.dll talk.exe scripts/run.sh ./
 
 ENTRYPOINT ["./run.sh"]
