@@ -1,11 +1,13 @@
-FROM i386/debian:stretch-slim
+FROM debian:stretch-slim
 
 RUN useradd -ms /bin/bash wineuser
 
-RUN apt-get update \
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         procps \
         wine \
+        wine32 \
         xvfb \
     && rm -rf /var/lib/apt/lists/*
 
